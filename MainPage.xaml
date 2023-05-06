@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Ö3_Playlist"
+             x:Class="Ö3_Playlist.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Button
+                x:Name="CounterBtn"
+                Text="Parse"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Center" />
+
+            <ActivityIndicator IsVisible="{Binding IsBusy}" Color="White"/>
+
+            <CollectionView ItemsSource="{Binding Entries}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="local:SongEntry">
+                        <HorizontalStackLayout HorizontalOptions="FillAndExpand">
+                            <Button Text="Open" Command="{Binding OpenCommand}"/>
+                            <Entry Text="{Binding Name}" IsReadOnly="True"/>
+                            <Button Text="{Binding IsLiked}" Command="{Binding ClickedCommand}"/>
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
