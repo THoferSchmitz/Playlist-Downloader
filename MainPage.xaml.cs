@@ -157,6 +157,7 @@ namespace Ö3_Playlist
             }
             IsBusy = false;
 
+            Entries = Database.GetSongs();
         }
 
         private IList<SongEntry> GetSongs(IDocument doc)
